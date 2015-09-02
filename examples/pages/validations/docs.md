@@ -114,4 +114,24 @@ var schema = {
 };
 ```
 
+Below is a table of what to expect from each form validation:
+
+Validation | Valid | Invalid | Description
+-----------|-------|---------|-------------
+`email`|'foo@bar.com', 'test123@m端ller.com', 'gmail...ignores...dots...@gmail.com'|'foo@bar.com.', 'z@co.c', '@invalid.com'|Checks if valid email
+`url`|'http://www.foobar.com/','http://189.123.14.13/','http://foo--bar.com'|'http://www.xn--.com/','http://lol @foobar.com/'|Check if valid URL
+`date`|'2011-08-04','04. 08. 2011.','08/04/2011','January 9, 2013'|'foo','2011-foo-04','GMT'|Check if valid date
+`before`| | |Check if date is before
+`after`| | |Check if date is after
+`number`|'8', '2012'|'j32h', 'j'|Checks if valid number
+`alpha`| | |Check if string is only letters
+`max`| | |Check if number is below a given max
+`min`| | |Check if number is above a given min
+`maxLength`| | |Check if string length is below a given max
+`minLength`| | |Check if strin length is above a given min
+`creditCard`| | |Check is credit card number is valid
+`oneOf`| | |Check if string matches a given string
+`pattern`| | |Check if string matches
+`currency`| | |Check if valid currency value
+`hexColor`| | |Check if valid hexadecimal color value
 
