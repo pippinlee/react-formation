@@ -118,22 +118,22 @@ Below is a table of what to expect from each form validation:
 
 Validation | Valid | Invalid | Description
 -----------|-------|---------|-------------
-`email`|'foo@bar.com', 'test123@m端ller.com', 'gmail...ignores...dots...@gmail.com'|'foo@bar.com.', 'z@co.c', '@invalid.com'|Checks if valid email
-`url`|'http://www.foobar.com/','http://189.123.14.13/','http://foo--bar.com'|'http://www.xn--.com/','http://lol @foobar.com/'|Check if valid URL
-`date`|'2011-08-04','04. 08. 2011.','08/04/2011','January 9, 2013'|'foo','2011-foo-04','GMT'|Check if valid date
-`before`|'2010-07-02', '2010-08-04', new Date(0)|'08/04/2011', new Date(2011, 9, 10)|Check if date is before
-`after`|'2011-08-04', new Date(2011, 8, 10)|'2010-07-02', '2011-08-03', new Date(0)|Check if date is after
-`number`|'8', '2012'|'j32h', 'j'|Checks if valid number
-`alpha`|'abc', 'ABC', 'FooBar'|'f o', 'foo1', ''|Check if string is only letters
-`max`|'5'|'42'|Check if number is below a given max
-`min`|'20'|'1|Check if number is above a given min
-`maxLength`|'cat'|'elephant'|Check if string length is below a given max
-`minLength`|'elephant'|'cat'|Check if strin length is above a given min
-`creditCard`|'4716461583322103', '4716-2210-5188-5662', '4929 7226 5379 7141'|'5398228707871528', 'foo'|Check is credit card number is valid
-`oneOf`|'foo', 'bar'|'baz'|Check if string matches a given string
-`pattern`|'foo'|'bar'|Check if string matches
-`currency`|'42.42', '2897.99', '2829873'|'42..42', '..38', '32.3'|Check if valid currency value
-`hexColor`|'1f1f1F'|'030k93l'|Check if valid hexadecimal color value
+`email`|`foo@bar.com` `test123@m端ller.com` `gm..ignores..dots..@gmail.com`|`foo@bar.com.` `z@co.c` `@invalid.com`|Checks if valid email
+`url`|`http://www.foobar.com/` `http://189.123.14.13/` `http://foo--bar.com`|`http://www.xn--.com/` `http://lol @foobar.com/`|Check if valid URL
+`date`|`2011-08-04` `04. 08. 2011.` `08/04/2011` `January 9, 2013`|`foo` `2011-foo-04` `GMT`|Check if valid date
+`before`|`2010-07-02` `2010-08-04` `new Date(0)`|`08/04/2011` `new Date(2011, 9, 10)`|Check if date is before
+`after`|`2011-08-04` `new Date(2011, 8, 10)`|`2010-07-02` `2011-08-03` `new Date(0)`|Check if date is after
+`number`|`8` `2012`|`j32h` `j`|Checks if valid number
+`alpha`|`abc` `ABC` `FooBar`|`f o` `foo1`|Check if string is only letters
+`max`|`5`|`42`|Check if number is below a given max
+`min`|`20`|`1`|Check if number is above a given min
+`maxLength`|`cat`|`elephant`|Check if string length is below a given max
+`minLength`|`elephant`|`cat`|Check if strin length is above a given min
+`creditCard`|`4716461583322103` `4716-2210-5188-5662` `4929 7226 5379 7141`|`5398228707871528` `foo`|Check is credit card number is valid
+`oneOf`|`foo` `bar`|`baz`|Check if string matches a given string
+`pattern`|`foo`|`bar`|Check if string matches
+`currency`|`42.42` `2897.99` `2829873`|`42..42` `..38` `32.3`|Check if valid currency value
+`hexColor`|`1f1f1F`|`030k93l`|Check if valid hexadecimal color value
 
 
 ### Validator helper: what to expect
