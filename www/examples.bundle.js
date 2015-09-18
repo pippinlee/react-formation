@@ -17681,19 +17681,24 @@
 	    var currentValue = this.state[key];
 	    var label = schema.label || key;
 	
+	    if (schema.type) {
+	      console.warn('Using "type" in your schema is deprecated. Please use "validations" instead.');
+	      schema.validations = schema.type;
+	    }
+	
 	    if (schema.required === true && !currentValue) errors.push(label + ' is required');
 	    if (typeof schema.required === 'function') {
 	      var isConditionallyRequred = schema.required.bind(this)();
 	      if (isConditionallyRequred && !currentValue) errors.push(label + ' is required');
 	    }
-	    if (currentValue && schema.type instanceof Validator) {
-	      var typeError = schema.type.assert(currentValue);
+	    if (currentValue && schema.validations instanceof Validator) {
+	      var typeError = schema.validations.assert(currentValue);
 	      if (typeError) errors = errors.concat(typeError);
-	    } else if (currentValue && typeof schema.type === 'string' && Validator[schema.type]) {
-	      var typeError = Validator[schema.type]().assert(currentValue);
+	    } else if (currentValue && typeof schema.validations === 'string' && Validator[schema.validations]) {
+	      var typeError = Validator[schema.validations]().assert(currentValue);
 	      if (typeError) errors = errors.concat(typeError);
-	    } else if (currentValue && typeof schema.type === 'function') {
-	      var typeError = schema.type.call(this, currentValue);
+	    } else if (currentValue && typeof schema.validations === 'function') {
+	      var typeError = schema.validations.call(this, currentValue);
 	      if (typeError) errors.push(typeError);
 	    }
 	
@@ -18917,7 +18922,7 @@
 	  },
 	  render: function render() {
 	    var props = assign({}, this.props, {
-	      type: 'radio',
+	      validations: 'radio',
 	      checked: this.props.value + '' === this.props.radioLink.value + '',
 	      onChange: this.onChange
 	    });
@@ -19803,23 +19808,23 @@
 	    return {
 	      firstName: {
 	        required: true,
-	        type: Validator.maxLength(5),
+	        validations: Validator.maxLength(5),
 	        label: 'First name'
 	      },
 	      lastName: {
 	        required: true,
 	        label: 'Last name',
-	        type: 'string'
+	        validations: 'string'
 	      },
 	      email: {
 	        label: 'Email',
 	        required: true,
-	        type: 'email'
+	        validations: 'email'
 	      },
 	      password: {
 	        required: true,
 	        label: 'Password',
-	        type: function type(val) {
+	        validations: function validations(val) {
 	          if (val.length >= 5) return false;
 	          return 'Password must be at least 5 characters. Please try again';
 	        }
@@ -19834,7 +19839,7 @@
 	        required: true
 	      },
 	      mailingList: {
-	        type: 'boolean'
+	        validations: 'boolean'
 	      }
 	    };
 	  },
