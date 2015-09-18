@@ -17560,7 +17560,7 @@
 	      return state;
 	    },
 	
-	    childContextTypes: contextConfig.types,
+	    childContextTypes: contextConfig.validations,
 	
 	    getChildContext: function getChildContext() {
 	      var _this2 = this;
@@ -17681,6 +17681,7 @@
 	    var currentValue = this.state[key];
 	    var label = schema.label || key;
 	
+	    // warn that type will be fully deprecated in future
 	    if (schema.type) {
 	      console.warn('Using "type" in your schema is deprecated. Please use "validations" instead.');
 	      schema.validations = schema.type;
@@ -18782,8 +18783,8 @@
 	var CONTEXT_NAME = 'reactFormation';
 	
 	// We can use this for contextTypes, childContextTypes
-	var types = {};
-	types[CONTEXT_NAME] = React.PropTypes.object;
+	var validations = {};
+	validations[CONTEXT_NAME] = React.PropTypes.object;
 	
 	// Methods that will be exposed on context.reactFormation and FormMixin
 	// Each method MUST have a .md file in src/lib/apiDocs
@@ -18795,7 +18796,7 @@
 	
 	module.exports = {
 	  name: CONTEXT_NAME,
-	  types: types,
+	  validations: validations,
 	  methods: methods
 	};
 
@@ -18829,7 +18830,7 @@
 	var contextConfig = __webpack_require__(155);
 	
 	var FormMixin = {
-	  contextTypes: contextConfig.types
+	  contextTypes: contextConfig.validations
 	};
 	
 	// Add each method defined in the context to the mixin
@@ -19847,13 +19848,13 @@
 	    alert(JSON.stringify(data));
 	  },
 	  render: function render() {
-	    return React.createElement("div", { className: "airbnb-eg" }, React.createElement("form", null, React.createElement(Input, { label: "First name", field: "firstName" }), React.createElement(Input, { label: "Last name", field: "lastName" }), React.createElement(Input, { label: "Email", field: "email" }), React.createElement(Input, { label: "Password", field: "password", type: "password" }), React.createElement("label", null, React.createElement(FormattedMessage, { message: this.getIntlMessage('birthday') })), React.createElement("div", { className: "helper-error", hidden: !this.didSubmit() || !this.validateField('birthdayMonth') && !this.validateField('birthdayDay') && !this.validateField('birthdayYear') }, "Select your birth date to continue"), React.createElement("select", { valueLink: this.linkField('birthdayMonth') }, React.createElement("option", { value: "" }, "Month"), dateData.months.map(function (month) {
+	    return React.createElement("div", { className: "airbnb-eg" }, React.createElement("form", null, React.createElement(Input, { label: "First name", field: "firstName" }), React.createElement(Input, { label: "Last name", field: "lastName" }), React.createElement(Input, { label: "Email", field: "email" }), React.createElement(Input, { label: "Password", field: "password", validations: "password" }), React.createElement("label", null, React.createElement(FormattedMessage, { message: this.getIntlMessage('birthday') })), React.createElement("div", { className: "helper-error", hidden: !this.didSubmit() || !this.validateField('birthdayMonth') && !this.validateField('birthdayDay') && !this.validateField('birthdayYear') }, "Select your birth date to continue"), React.createElement("select", { valueLink: this.linkField('birthdayMonth') }, React.createElement("option", { value: "" }, "Month"), dateData.months.map(function (month) {
 	      return React.createElement("option", { value: month }, month);
 	    })), React.createElement("select", { valueLink: this.linkField('birthdayDay') }, React.createElement("option", { value: "" }, "Day"), dateData.days.map(function (day) {
 	      return React.createElement("option", { value: day }, day);
 	    })), React.createElement("select", { valueLink: this.linkField('birthdayYear') }, React.createElement("option", { value: "" }, "Year"), dateData.years.map(function (year) {
 	      return React.createElement("option", { value: year }, year);
-	    })), React.createElement("label", { className: "checkbox" }, React.createElement("input", { type: "checkbox", checkedLink: this.linkField('mailingList') }), "I'd like to receive coupons and inspiration"), React.createElement("p", { className: "terms" }, "By signing up, I agree to Airbnb's Terms of Service, Privacy Policy, Guest Refund Policy, and Host Guarantee Terms."), React.createElement("div", { className: "submit-footer" }, React.createElement(SubmitButton, null, "Sign up"))));
+	    })), React.createElement("label", { className: "checkbox" }, React.createElement("input", { validations: "checkbox", checkedLink: this.linkField('mailingList') }), "I'd like to receive coupons and inspiration"), React.createElement("p", { className: "terms" }, "By signing up, I agree to Airbnb's Terms of Service, Privacy Policy, Guest Refund Policy, and Host Guarantee Terms."), React.createElement("div", { className: "submit-footer" }, React.createElement(SubmitButton, null, "Sign up"))));
 	  }
 	});
 	

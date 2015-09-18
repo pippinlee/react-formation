@@ -85,7 +85,7 @@ var Form = CreateForm({
         <Input label="First name" field="firstName" />
         <Input label="Last name" field="lastName" />
         <Input label="Email" field="email" />
-        <Input label="Password" field="password" type="password" />
+        <Input label="Password" field="password" validations="password" />
 
         <label><FormattedMessage message={this.getIntlMessage('birthday')} /></label>
         <div className="helper-error" hidden={!this.didSubmit() || (!this.validateField('birthdayMonth') && !this.validateField('birthdayDay') && !this.validateField('birthdayYear'))}>
@@ -104,7 +104,7 @@ var Form = CreateForm({
           {dateData.years.map(year => <option value={year}>{year}</option>)}
         </select>
         <label className="checkbox">
-          <input type="checkbox" checkedLink={this.linkField('mailingList')} />
+          <input validations="checkbox" checkedLink={this.linkField('mailingList')} />
           I'd like to receive coupons and inspiration
         </label>
         <p className="terms">By signing up, I agree to Airbnb's Terms of Service, Privacy Policy, Guest Refund Policy, and Host Guarantee Terms.</p>

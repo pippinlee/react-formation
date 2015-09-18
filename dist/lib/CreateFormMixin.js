@@ -74,6 +74,7 @@ module.exports = {
     var currentValue = this.state[key];
     var label = schema.label || key;
 
+    // warn that type will be fully deprecated in future
     if (schema.type) {
       console.warn('Using "type" in your schema is deprecated. Please use "validations" instead.');
       schema.validations = schema.type;
