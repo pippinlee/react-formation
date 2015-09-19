@@ -6,8 +6,8 @@ var React = require('react');
 var CONTEXT_NAME = 'reactFormation';
 
 // We can use this for contextTypes, childContextTypes
-var validations = {};
-validations[CONTEXT_NAME] = React.PropTypes.object;
+var types = {};
+types[CONTEXT_NAME] = React.PropTypes.object;
 
 // Methods that will be exposed on context.reactFormation and FormMixin
 // Each method MUST have a .md file in src/lib/apiDocs
@@ -19,6 +19,6 @@ var methods = ['didSubmit', 'isGroupValid', 'isValid', 'linkField', 'submitForm'
 
 module.exports = {
   name: CONTEXT_NAME,
-  validations: validations,
+  types: types,
   methods: methods
 };

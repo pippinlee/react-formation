@@ -17560,7 +17560,7 @@
 	      return state;
 	    },
 	
-	    childContextTypes: contextConfig.validations,
+	    childContextTypes: contextConfig.types,
 	
 	    getChildContext: function getChildContext() {
 	      var _this2 = this;
@@ -18783,8 +18783,8 @@
 	var CONTEXT_NAME = 'reactFormation';
 	
 	// We can use this for contextTypes, childContextTypes
-	var validations = {};
-	validations[CONTEXT_NAME] = React.PropTypes.object;
+	var types = {};
+	types[CONTEXT_NAME] = React.PropTypes.object;
 	
 	// Methods that will be exposed on context.reactFormation and FormMixin
 	// Each method MUST have a .md file in src/lib/apiDocs
@@ -18796,7 +18796,7 @@
 	
 	module.exports = {
 	  name: CONTEXT_NAME,
-	  validations: validations,
+	  types: types,
 	  methods: methods
 	};
 
@@ -18830,7 +18830,7 @@
 	var contextConfig = __webpack_require__(155);
 	
 	var FormMixin = {
-	  contextTypes: contextConfig.validations
+	  contextTypes: contextConfig.types
 	};
 	
 	// Add each method defined in the context to the mixin
@@ -19799,7 +19799,7 @@
 	      valid: this.didSubmit() && !errors,
 	      invalid: this.didSubmit() && errors
 	    });
-	    return React.createElement("div", { className: "form-group" }, React.createElement(ErrorMessage, { className: "helper-error", field: this.props.field }), React.createElement("input", { className: inputClass, type: this.props.type || 'text', placeholder: this.props.label, valueLink: this.linkField(this.props.field) }));
+	    return React.createElement("div", { className: "form-group" }, React.createElement(ErrorMessage, { className: "helper-error", field: this.props.field }), React.createElement("input", { className: inputClass, validations: this.props.validations || 'text', placeholder: this.props.label, valueLink: this.linkField(this.props.field) }));
 	  }
 	});
 	
@@ -20002,7 +20002,7 @@
 	      username: {
 	        required: true,
 	        label: 'Username',
-	        type: function type(val) {
+	        validations: function validations(val) {
 	          if (/^[a-zA-Z0-9\-]{1,20}$/.test(val)) return false;
 	          return 'Must be 1-20 characters long and use only "-" and alphanumeric symbols';
 	        }
@@ -20010,18 +20010,18 @@
 	      email: {
 	        required: true,
 	        label: 'Email',
-	        type: 'email'
+	        validations: 'email'
 	      },
 	      password: {
 	        required: true,
 	        label: 'Password',
-	        type: function type(val) {
+	        validations: function validations(val) {
 	          if (val && zxcvbn(val).score > 0) return false;
 	          return 'Password is not strong enough';
 	        }
 	      },
 	      subscribe: {
-	        type: 'boolean'
+	        validations: 'boolean'
 	      }
 	    };
 	  },
@@ -20050,7 +20050,7 @@
 	
 	  render: function render() {
 	    var passStrength = this.getPassStrength();
-	    return React.createElement("form", { className: "login-eg animated fadeInUp" }, React.createElement("div", { className: "body" }, React.createElement("div", { className: "form-group" }, React.createElement("label", { hidden: !this.props.showLabels }, "Username"), React.createElement("input", { placeholder: this.props.showLabels ? '' : 'Username', type: "text", onBlur: this.onBlur('username'), valueLink: this.linkField('username') }), React.createElement(ErrorMessage, { show: this.state.blurred.username, field: "username" })), React.createElement("div", { className: "form-group" }, React.createElement("label", { hidden: !this.props.showLabels }, "Email"), React.createElement("input", { placeholder: this.props.showLabels ? '' : 'Email', type: "text", onBlur: this.onBlur('email'), valueLink: this.linkField('email') }), React.createElement(ErrorMessage, { show: this.state.blurred.email, field: "email" })), React.createElement("div", { className: "form-group" }, React.createElement("label", { hidden: !this.props.showLabels }, "Password"), React.createElement("input", { placeholder: this.props.showLabels ? '' : 'Password', type: "password", name: "password", onBlur: this.onBlur('password'), valueLink: this.linkField('password') }), React.createElement("div", { className: 'password-strength strength-' + passStrength }, passStrength >= 0 && this.passStrengthStrings[passStrength], React.createElement("span", { className: "indicator", style: { width: (passStrength + 1) * 20 + '%' } })), React.createElement(ErrorMessage, { show: this.state.blurred.password, field: "password" }))), React.createElement("div", { className: "submit-footer" }, React.createElement(SubmitButton, { style: { backgroundColor: this.props.buttonColor } }, this.props.signUpMessage || 'Sign Up')));
+	    return React.createElement("form", { className: "login-eg animated fadeInUp" }, React.createElement("div", { className: "body" }, React.createElement("div", { className: "form-group" }, React.createElement("label", { hidden: !this.props.showLabels }, "Username"), React.createElement("input", { placeholder: this.props.showLabels ? '' : 'Username', validations: "text", onBlur: this.onBlur('username'), valueLink: this.linkField('username') }), React.createElement(ErrorMessage, { show: this.state.blurred.username, field: "username" })), React.createElement("div", { className: "form-group" }, React.createElement("label", { hidden: !this.props.showLabels }, "Email"), React.createElement("input", { placeholder: this.props.showLabels ? '' : 'Email', validations: "text", onBlur: this.onBlur('email'), valueLink: this.linkField('email') }), React.createElement(ErrorMessage, { show: this.state.blurred.email, field: "email" })), React.createElement("div", { className: "form-group" }, React.createElement("label", { hidden: !this.props.showLabels }, "Password"), React.createElement("input", { placeholder: this.props.showLabels ? '' : 'Password', validations: "password", name: "password", onBlur: this.onBlur('password'), valueLink: this.linkField('password') }), React.createElement("div", { className: 'password-strength strength-' + passStrength }, passStrength >= 0 && this.passStrengthStrings[passStrength], React.createElement("span", { className: "indicator", style: { width: (passStrength + 1) * 20 + '%' } })), React.createElement(ErrorMessage, { show: this.state.blurred.password, field: "password" }))), React.createElement("div", { className: "submit-footer" }, React.createElement(SubmitButton, { style: { backgroundColor: this.props.buttonColor } }, this.props.signUpMessage || 'Sign Up')));
 	  }
 	});
 	

@@ -30,7 +30,7 @@ var Input = React.createClass({
     });
     return (<div className="form-group">
       <ErrorMessage className="helper-error" field={this.props.field} />
-      <input className={inputClass} type={this.props.type || 'text'} placeholder={this.props.label} valueLink={this.linkField(this.props.field)} />
+      <input className={inputClass} validations={this.props.validations || 'text'} placeholder={this.props.label} valueLink={this.linkField(this.props.field)} />
     </div>);
   }
 });

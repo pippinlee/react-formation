@@ -3,7 +3,7 @@
 var contextConfig = require('./contextConfig');
 
 var FormMixin = {
-  contextTypes: contextConfig.validations
+  contextTypes: contextConfig.types
 };
 
 // Add each method defined in the context to the mixin

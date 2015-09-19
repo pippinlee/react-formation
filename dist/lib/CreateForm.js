@@ -38,7 +38,7 @@ module.exports = function CreateForm(config) {
       return state;
     },
 
-    childContextTypes: contextConfig.validations,
+    childContextTypes: contextConfig.types,
 
     getChildContext: function getChildContext() {
       var _this2 = this;
