@@ -162,7 +162,7 @@ Validator.prototype.assert = function (value, context) {
     var errorMessage = definition.message.call(this, value);
     return definition.validate.call(context || this, value) ? false : errorMessage;
   }).filter(error => error);
-  return results.length ? results : false;
+  return results.length ? results : true;
 };
 
 

@@ -51,7 +51,7 @@ describe('CreateForm', function () {
 
     it('should not call onSuccess if the form is invalid', function () {
       form.submitForm();
-      should.equal(didSubmit, false);
+      should.equal(didSubmit, true);
     });
 
     it('should call onSuccess if form is valid, skipping undefined values', function () {

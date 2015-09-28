@@ -92,7 +92,7 @@ module.exports = {
     }
     if (typeError) errors = errors.concat(typeError);
 
-    return errors.length ? errors : false;
+    return errors.length ? errors : true;
   },
 
   didSubmit: function (field) {
@@ -101,18 +101,18 @@ module.exports = {
   },
 
   isGroupValid: function (groupName) {
-    var isValid = true;
+    var isValid = false;
     var fields = Object.keys(this.__schema).filter(key => this.__schema[key].group === groupName);
     fields.forEach(key => {
-      if (this.validateField(key)) isValid = false;
+      if (this.validateField(key)) isValid = true;
     });
     return isValid;
   },
 
   isValid: function () {
-    var isValid = true;
+    var isValid = false;
     Object.keys(this.__schema).forEach(key => {
-      if (this.validateField(key)) isValid = false;
+      if (this.validateField(key)) isValid = true;
     });
     return isValid;
   }
